@@ -38,18 +38,13 @@ async function changeWhetherUI(locationSearch){
         }
         if(temp <= 28){
             body.setAttribute('class','warm')
-
         }
         if(temp <= 25){
             body.setAttribute('class','cool')
-
         }
         if(temp <= 19){
             body.setAttribute('class','cold')
-
-        }
-
-        
+        }     
     }else{
         content.classList.add('hide')
     }
@@ -88,6 +83,7 @@ const handleVoice =(text)=>{
     // }
 }
 micro.addEventListener('click', (e)=>{
+
     e.preventDefault();
     recognition.start();
     micro.classList.add('recording')
