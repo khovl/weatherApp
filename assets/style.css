@@ -63,6 +63,27 @@ body {
     transform: translateY(-50%);
     cursor: pointer;
 }
+
+.recording-icon {
+    display: none;
+    position:absolute;
+    margin: auto;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 13px;
+    height: 13px;
+    background: red;   
+    border-radius: 50%;
+    animation: pulse 1.5s infinite linear;
+}
+.micro.recording .recording-icon{
+    display: inline-block;
+}
+.micro.recording .fa-microphone{
+    display: none;
+}
+
 .search{
     width: 100%;
     padding: 10px 20px;
@@ -141,4 +162,15 @@ body {
 .hide {
     visibility: hidden;
     opacity: 0;
+}
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 3px 0 rgba(173,0,0,0.3);
+      }
+      65% {
+        box-shadow: 0 0 3px 5px rgba(173,0,0,0.3);
+      }
+      100% {
+        box-shadow: 0 0 3px 5px rgba(173,0,0,0);
+      }
 }

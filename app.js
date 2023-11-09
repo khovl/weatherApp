@@ -78,25 +78,30 @@ const handleVoice =(text)=>{
         search.value=location;
         const changeEvent= new Event('change');
         search.dispatchEvent(changeEvent);
-    }else{
-        const location= handleText.trim();
-        console.log('location',location);
-        search.value=location;
-        const changeEvent= new Event('change');
-        search.dispatchEvent(changeEvent);
     }
+    // else{
+    //     const location= handleText.trim();
+    //     console.log('location',location);
+    //     search.value=location;
+    //     const changeEvent= new Event('change');
+    //     search.dispatchEvent(changeEvent);
+    // }
 }
 micro.addEventListener('click', (e)=>{
     e.preventDefault();
-
     recognition.start();
+    micro.classList.add('recording')
 });
 
 recognition.onspeechend = ()=>{
-    recognition.stop()
+    recognition.stop();
+    micro.classList.remove('recording')
+
 }
 recognition.onerror = (err)=>{
     console.log(err);
+    micro.classList.remove('recording')
+
 }
 recognition.onresult=(e)=>{
     console.log('onresult',e);
