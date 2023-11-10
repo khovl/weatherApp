@@ -35,8 +35,7 @@ async function changeWhetherUI(locationSearch){
         let temp = Math.round((data.main.temp)-273.15)
         
         value.innerText = temp
-        console.log(temp);
-        desc.innerText= data.weather[0]?data.weather[0].main:''
+        desc.innerText= data.weather[0]?data.weather[0].main:'';
         day.innerText= new Date().toDateString('vi')
     
         // body.setAttribute('class','hot')
@@ -66,8 +65,8 @@ changeWhetherUI('Da lat')
 
 const handleVoice =(text)=>{
     const handleText = text.toLowerCase();
-    const location = handleText;
-    search.value = location;
+    search.value = handleText;
+    console.log(search.value);
     const changeEvent= new Event('change');
     search.dispatchEvent(changeEvent);
 }
