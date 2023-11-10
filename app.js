@@ -11,6 +11,13 @@ let day= document.querySelector('.day')
 let date= document.querySelector('.date')
 let time = document.querySelector('.time')
 let body = document.querySelector('body')
+//code tro ly ảo
+let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition= new SpeechRecognition();
+recognition.lang = 'vi-VI';
+recognition.continuous = false;
+const micro = document.querySelector('.micro');
+
 
 async function changeWhetherUI(locationSearch){
  
@@ -49,38 +56,20 @@ async function changeWhetherUI(locationSearch){
         content.classList.add('hide')
     }
 }
-search.addEventListener( 'keypress', (e)=>{
-    if(e.code=== "Enter"){
-        let locationSearch= search.value.trim()
-        changeWhetherUI(locationSearch)
-    }  
+search.addEventListener('change', ()=>{
+    let locationSearch= search.value.trim()
+    changeWhetherUI(locationSearch)
+     
 })
 changeWhetherUI('Da lat')
 
-//code tro ly ảo
-let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition= new SpeechRecognition();
- recognition.lang = 'vi-VI';
- recognition.continuous = false;
-const micro = document.querySelector('.micro');
+
 const handleVoice =(text)=>{
     const handleText = text.toLowerCase();
-
-    if(handleText.includes('thời tiết tại')){
-        const location= handleText.split('tại')[1].trim();
-
-        console.log('location',location);
-        search.value=location;
-        const changeEvent= new Event('change');
-        search.dispatchEvent(changeEvent);
-    }
-    // else{
-    //     const location= handleText.trim();
-    //     console.log('location',location);
-    //     search.value=location;
-    //     const changeEvent= new Event('change');
-    //     search.dispatchEvent(changeEvent);
-    // }
+    const location = handleText;
+    search.value = location;
+    const changeEvent= new Event('change');
+    search.dispatchEvent(changeEvent);
 }
 micro.addEventListener('click', (e)=>{
 
